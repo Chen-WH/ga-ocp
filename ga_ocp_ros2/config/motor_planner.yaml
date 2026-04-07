@@ -1,0 +1,10 @@
+crocoddyl_motor_planner_node:
+  ros__parameters:
+    dt: 0.008
+    horizon: 100
+    max_iterations: 100
+    use_warm_start: true
+    running_motor_weight: 10.0
+    terminal_motor_weight: 100.0
+    velocity_limit_weight: 100.0
+    velocity_limit_scale: 0.5

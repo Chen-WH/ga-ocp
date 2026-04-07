@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ga_ocp_ros2</name>
+  <version>0.0.1</version>
+  <description>ROS 2 application-layer package for ga-ocp nodes, launch files, and visualization assets</description>
+  <maintainer email="Chen.WH@sjtu.edu.cn">ChenWH</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>ga_ocp_core</depend>
+  <depend>ament_index_cpp</depend>
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>interactive_markers</depend>
+  <depend>pluginlib</depend>
+  <depend>rviz_common</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>visualization_msgs</depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>mujoco-wrapper</exec_depend>
+  <exec_depend>ur-wrapper</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <rviz plugin="${prefix}/plugin_description.xml"/>
+  </export>
+</package>

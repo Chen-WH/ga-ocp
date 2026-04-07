@@ -1,0 +1,15 @@
+crocoddyl_collision_planner_node:
+  ros__parameters:
+    dt: 0.008
+    horizon: 100
+    max_iterations: 100
+    placement_running_weight: 10.0
+    placement_terminal_weight: 100.0
+    velocity_limit_weight: 100.0
+    collision_weight: 100.0
+    safety_distance: 0.06
+    velocity_limit_scale: 0.5
+    publish_visualization: true
+    marker_frame_id: base_link
+    obstacle_radii: [0.25]
+    obstacle_centers: [0.1, 0.7, 2.1]

@@ -1,0 +1,11 @@
+target_interactive_marker_node:
+  ros__parameters:
+    marker_frame_id: base_link
+    marker_scale: 0.25
+    target_x: 0.0
+    target_y: 0.2561
+    target_z: 1.4273
+    target_qx: -0.7071
+    target_qy: 0.0
+    target_qz: 0.0
+    target_qw: 0.7071

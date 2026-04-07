@@ -1,0 +1,90 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: ga_ocp_rviz_plugins/PlanningPanel
+    Name: Planning
+  - Class: rviz_common/Selection
+    Name: Selection
+  - Class: rviz_common/Tool Properties
+    Name: Tool Properties
+  - Class: rviz_common/Views
+    Name: Views
+  - Class: rviz_common/Time
+    Name: Time
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+      Plane: XY
+      Plane Cell Count: 20
+      Color: 160; 160; 164
+      Alpha: 0.5
+    - Class: rviz_default_plugins/RobotModel
+      Name: RobotModel
+      Enabled: true
+      Description Topic:
+        Value: /robot_description
+      TF Prefix: ""
+      Visual Enabled: true
+      Collision Enabled: false
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Frames:
+        All Enabled: false
+        base: false
+        base_link: false
+        base_link_inertia: false
+        flange: false
+        forearm_link: false
+        shoulder_link: false
+        #tool0: true
+        upper_arm_link: false
+        wrist_1_link: false
+        wrist_2_link: false
+        wrist_3_link: false
+      Show Axes: true
+      Show Names: false
+    - Class: rviz_default_plugins/InteractiveMarkers
+      Name: InteractiveMarkers
+      Enabled: true
+      Interactive Markers Namespace: /target_interactive_marker
+      Show Descriptions: true
+      Show Axes: true
+    - Class: rviz_default_plugins/MarkerArray
+      Name: MotorPlanPreview
+      Enabled: true
+      Topic: /ga_ocp/motor_plan_preview
+      Namespaces:
+        planned_target: true
+        planned_trajectory: true
+        planned_waypoints: true
+      Queue Size: 100
+  Enabled: true
+  Global Options:
+    Fixed Frame: base_link
+    Background Color: 48; 48; 48
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 1.8
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0.4
+      Name: Current View
+      Pitch: 0.5
+      Yaw: 0.8
+Window Geometry:
+  Height: 1440
+  Width: 2560

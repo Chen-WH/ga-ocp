@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ga_ocp_core</name>
+  <version>0.0.1</version>
+  <description>Geometric-algebra-based optimal control benchmarks and Crocoddyl integration built on TetraPGA</description>
+  <maintainer email="Chen.WH@sjtu.edu.cn">ChenWH</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>TetraPGA</depend>
+  <depend>pinocchio</depend>
+  <depend>crocoddyl</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

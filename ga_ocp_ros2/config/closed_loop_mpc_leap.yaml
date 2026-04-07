@@ -1,0 +1,26 @@
+closed_loop_mpc_node:
+  ros__parameters:
+    robot: leap_left
+    backend: tetrapga
+    dt: 0.02
+    horizon: 20
+    max_iterations: 50
+    solve_budget_ms: 8.0
+    control_rate_hz: 50.0
+    experiment_duration_s: 20.0
+    stop_tol: 1.0e-7
+    use_warm_start: true
+    auto_start: true
+    shutdown_on_finish: true
+    state_running_weight: 8.0
+    state_terminal_weight: 100.0
+    control_weight: 0.0005
+    velocity_limit_weight: 18.0
+    velocity_limit_scale: 0.9
+    reference_frequency_hz: 0.10
+    reference_secondary_ratio: 0.5
+    reference_amplitude_scale: 0.95
+    reference_ramp_duration_s: 1.5
+    reference_amplitudes:
+      [0.22, 0.22, 0.19, 0.19, 0.22, 0.22, 0.19, 0.19,
+       0.22, 0.22, 0.19, 0.19, 0.17, 0.17, 0.22, 0.22]

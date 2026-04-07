@@ -1,0 +1,10 @@
+<library path="ga_ocp_planning_panel">
+  <class
+      name="ga_ocp_rviz_plugins/PlanningPanel"
+      type="ga_ocp_rviz_plugins::PlanningPanel"
+      base_class_type="rviz_common::Panel">
+    <description>
+      Planning control panel with Plan, Execute, Plan&amp;Execute and Clear actions for ga-ocp planners.
+    </description>
+  </class>
+</library>
