@@ -14,7 +14,7 @@ def _read_text(path: str) -> str:
 def generate_launch_description() -> LaunchDescription:
     ros2_share = get_package_share_directory('ga_ocp_ros2')
     core_share = get_package_share_directory('ga_ocp_core')
-    urdf_path = f"{core_share}/description/urdf/ur10.urdf"
+    urdf_path = f"{core_share}/robot-assets/ur10/urdf/ur10.urdf"
     rviz_config = f"{ros2_share}/rviz/ga_ocp_motor_validation.rviz"
     planner_config = f"{ros2_share}/config/motor_planner.yaml"
     marker_config = f"{ros2_share}/config/target_interactive_marker.yaml"
@@ -46,7 +46,7 @@ def generate_launch_description() -> LaunchDescription:
     )
 
     mujoco_executor_node = Node(
-        package='mujoco-wrapper',
+        package='ga_ocp_ros2',
         executable='joint_command_executor.py',
         name='mujoco_joint_executor_node',
         output='screen',

@@ -60,7 +60,7 @@ int main() {
     auto pin_start = Clock::now();
     
     // 1. 加载 Pinocchio 模型
-    const std::string urdf_path = std::string(GA_OCP_TETRAPGA_DESCRIPTION_DIR) + "/urdf/ur10.urdf";
+    const std::string urdf_path = std::string(GA_OCP_ROBOT_ASSETS_DIR) + "/ur10/urdf/ur10.urdf";
     pinocchio::Model pin_model;
     pinocchio::urdf::buildModel(urdf_path, pin_model);
     

@@ -126,7 +126,7 @@ private:
     const std::string ga_ocp_core_share = ament_index_cpp::get_package_share_directory("ga_ocp_core");
 
     if (robot_name == "ur") {
-      const std::string urdf_path = ga_ocp_core_share + "/description/urdf/ur10.urdf";
+      const std::string urdf_path = ga_ocp_core_share + "/robot-assets/ur10/urdf/ur10.urdf";
       std::vector<std::string> joint_names = makeJointNames({
           "shoulder_pan_joint",
           "shoulder_lift_joint",
@@ -139,7 +139,7 @@ private:
     }
 
     if (robot_name == "franka") {
-      const std::string urdf_path = ga_ocp_core_share + "/description/urdf/franka_panda.urdf";
+      const std::string urdf_path = ga_ocp_core_share + "/robot-assets/franka_panda/urdf/panda.urdf";
       std::vector<std::string> joint_names = makeJointNames({
           "panda_joint1",
           "panda_joint2",

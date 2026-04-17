@@ -58,7 +58,7 @@ def _generate_mujoco_collision_scene(mujoco_share: str, planner_config: str) -> 
 
     scene_text = "\n".join([
         '<mujoco model="ur10_collision_scene_generated">',
-        f'  <include file="{os.path.join(mujoco_share, "models", "ur10", "ur10.xml")}"/>',
+        f'  <include file="{os.path.join(mujoco_share, "robot-assets", "ur10", "mjcf", "ur10.xml")}"/>',
         '',
         '  <statistic center="0.4 0 0.4" extent="1"/>',
         '',
@@ -98,12 +98,11 @@ def _generate_mujoco_collision_scene(mujoco_share: str, planner_config: str) -> 
 def generate_launch_description() -> LaunchDescription:
     ros2_share = get_package_share_directory('ga_ocp_ros2')
     core_share = get_package_share_directory('ga_ocp_core')
-    mujoco_share = get_package_share_directory('mujoco-wrapper')
-    urdf_path = f"{core_share}/description/urdf/ur10.urdf"
+    urdf_path = f"{core_share}/robot-assets/ur10/urdf/ur10.urdf"
     rviz_config = f"{ros2_share}/rviz/ga_ocp_collision_validation.rviz"
     planner_config = f"{ros2_share}/config/collision_planner.yaml"
     marker_config = f"{ros2_share}/config/target_interactive_marker.yaml"
-    collision_scene = _generate_mujoco_collision_scene(mujoco_share, planner_config)
+    collision_scene = _generate_mujoco_collision_scene(core_share, planner_config)
 
     use_rviz = LaunchConfiguration('rviz')
 
@@ -132,7 +131,7 @@ def generate_launch_description() -> LaunchDescription:
     )
 
     mujoco_executor_node = Node(
-        package='mujoco-wrapper',
+        package='ga_ocp_ros2',
         executable='joint_command_executor.py',
         name='mujoco_joint_executor_node',
         output='screen',

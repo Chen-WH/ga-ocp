@@ -124,6 +124,11 @@ install(TARGETS ${GA_OCP_ROS2_TARGETS}
   DESTINATION lib/${PROJECT_NAME}
 )
 
+install(PROGRAMS
+  scripts/joint_command_executor.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 install(TARGETS ga_ocp_planning_panel
   LIBRARY DESTINATION lib
 )

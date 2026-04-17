@@ -29,8 +29,14 @@ find_package(TetraPGA CONFIG REQUIRED)
 find_package(pinocchio REQUIRED)
 find_package(crocoddyl REQUIRED)
 
-if(NOT TetraPGA_DESCRIPTION_DIR)
-    message(FATAL_ERROR "TetraPGA_DESCRIPTION_DIR was not exported by TetraPGAConfig.cmake")
+if(NOT TetraPGA_ROBOT_ASSETS_DIR)
+    message(FATAL_ERROR "TetraPGA_ROBOT_ASSETS_DIR was not exported by TetraPGAConfig.cmake")
+endif()
+
+if(NOT EXISTS "${TetraPGA_ROBOT_ASSETS_DIR}/ur10/urdf/ur10.urdf")
+    message(FATAL_ERROR
+        "TetraPGA_ROBOT_ASSETS_DIR must point to the robot-assets repository. "
+        "Expected to find ur10/urdf/ur10.urdf under '${TetraPGA_ROBOT_ASSETS_DIR}'.")
 endif()
 
 if(GA_OCP_BUILD_CROCODDYL_TESTS OR GA_OCP_BUILD_BENCHMARKS)
@@ -60,7 +66,7 @@ function(ga_ocp_add_crocoddyl_test target_name source_file)
         pinocchio::pinocchio
     )
     target_compile_definitions(${target_name}
-        PRIVATE GA_OCP_TETRAPGA_DESCRIPTION_DIR="${TetraPGA_DESCRIPTION_DIR}")
+        PRIVATE GA_OCP_ROBOT_ASSETS_DIR="${TetraPGA_ROBOT_ASSETS_DIR}")
     list(APPEND GA_OCP_CROCODDYL_TEST_TARGETS ${target_name})
     set(GA_OCP_CROCODDYL_TEST_TARGETS "${GA_OCP_CROCODDYL_TEST_TARGETS}" PARENT_SCOPE)
 endfunction()
@@ -76,7 +82,7 @@ function(ga_ocp_add_benchmark target_name source_file)
     )
     target_compile_definitions(${target_name}
         PRIVATE
-          GA_OCP_TETRAPGA_DESCRIPTION_DIR="${TetraPGA_DESCRIPTION_DIR}"
+          GA_OCP_ROBOT_ASSETS_DIR="${TetraPGA_ROBOT_ASSETS_DIR}"
           GA_OCP_HAS_CASADI_BENCH=1)
     target_include_directories(${target_name} PRIVATE ${CASADI_INCLUDE_DIRS})
     target_link_directories(${target_name} PRIVATE ${CASADI_LIBRARY_DIRS})
@@ -110,7 +116,23 @@ if(GA_OCP_BUILD_BENCHMARKS)
 endif()
 
 install(DIRECTORY include/ DESTINATION include)
-install(DIRECTORY "${TetraPGA_DESCRIPTION_DIR}/" DESTINATION share/${PROJECT_NAME}/description)
+
+set(GA_OCP_ROBOT_ASSET_PACKAGES
+    franka_panda
+    jaka_zu12
+    kinect_dk
+    leap_hand
+    realsense_d435i
+    reorientation_cube
+    robotiq_2f85
+    ur10)
+
+foreach(_ga_ocp_robot_asset IN LISTS GA_OCP_ROBOT_ASSET_PACKAGES)
+    install(
+        DIRECTORY "${TetraPGA_ROBOT_ASSETS_DIR}/${_ga_ocp_robot_asset}"
+        DESTINATION share/${PROJECT_NAME}/robot-assets
+    )
+endforeach()
 
 ament_export_include_directories(include)
 ament_export_dependencies(Eigen3 TetraPGA pinocchio crocoddyl)

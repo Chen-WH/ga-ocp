@@ -315,14 +315,14 @@ std::vector<MethodKind> AvailableMethods() {
 }
 
 pinocchio::Model BuildUr10PinModel() {
-  const std::filesystem::path urdf_path = PackageRoot() / "description" / "urdf" / "ur10.urdf";
+  const std::filesystem::path urdf_path = PackageRoot() / "robot-assets" / "ur10" / "urdf" / "ur10.urdf";
   pinocchio::Model pin_model;
   pinocchio::urdf::buildModel(urdf_path.string(), pin_model);
   return pin_model;
 }
 
 std::filesystem::path LeapHandUrdfPath() {
-  return PackageRoot() / "description" / "urdf" / "leap_hand.urdf";
+  return PackageRoot() / "robot-assets" / "leap_hand" / "urdf" / "leap_hand_left.urdf";
 }
 
 pinocchio::Model BuildLeapHandPinModel() {

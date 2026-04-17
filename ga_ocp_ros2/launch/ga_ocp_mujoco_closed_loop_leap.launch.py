@@ -35,7 +35,7 @@ def generate_launch_description() -> LaunchDescription:
     )
 
     mujoco_executor_node = Node(
-        package='mujoco-wrapper',
+        package='ga_ocp_ros2',
         executable='joint_command_executor.py',
         name='mujoco_joint_executor_node',
         output='screen',

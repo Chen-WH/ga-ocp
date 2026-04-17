@@ -280,7 +280,7 @@ RobotConfig MakeRobotConfig(const std::string& robot) {
   if (robot == "ur") {
     RobotConfig config{
         robot,
-        share_dir + "/description/urdf/ur10.urdf",
+        share_dir + "/robot-assets/ur10/urdf/ur10.urdf",
         "ur",
         MakeJointNames({
             "shoulder_pan_joint",
@@ -290,7 +290,7 @@ RobotConfig MakeRobotConfig(const std::string& robot) {
             "wrist_2_joint",
             "wrist_3_joint",
         }),
-        model_from_name("ur", share_dir + "/description/urdf/ur10.urdf"),
+        model_from_name("ur", share_dir + "/robot-assets/ur10/urdf/ur10.urdf"),
         Eigen::Vector3d(0.0, 0.0, 0.01),
         Eigen::Quaterniond(0.707107, 0.0, 0.0, -0.707107),
         "wrist_3_joint",
@@ -309,10 +309,10 @@ RobotConfig MakeRobotConfig(const std::string& robot) {
     }
     RobotConfig config{
         robot,
-        share_dir + "/description/urdf/leap_hand.urdf",
+        share_dir + "/robot-assets/leap_hand/urdf/leap_hand_left.urdf",
         "leap_left",
         joint_names,
-        model_from_name("leap_left", share_dir + "/description/urdf/leap_hand.urdf"),
+        model_from_name("leap_left", share_dir + "/robot-assets/leap_hand/urdf/leap_hand_left.urdf"),
         Eigen::Vector3d::Zero(),
         Eigen::Quaterniond::Identity(),
         "",
